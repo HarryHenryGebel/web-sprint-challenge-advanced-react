@@ -12,18 +12,14 @@ export default class PlantList extends Component {
   // when the component mounts:
   //   - fetch data from the server endpoint - http://localhost:3333/plants
   //   - set the returned plants array to this.state.plants
-  componentDidMount() {
-    async function fetch() {
-      try {
-        const id = requester.createUniqueID();
-        await requester.get("http://localhost:3333/plants", id);
-      } catch (error) {
-        console.log(error);
-        throw error;
-      }
+  async componentDidMount() {
+    try {
+      const id = requester.createUniqueID();
+      await requester.get("http://localhost:3333/plants", id);
+    } catch (error) {
+      console.log(error);
+      throw error;
     }
-
-    fetch();
   }
 
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
