@@ -75,7 +75,7 @@ const CheckoutForm = (props) => {
                  value={values.zip}
                  onChange={handleChanges} />
         </label>
-        <button>Checkout</button>
+        <button data-testid="submitButton">Checkout</button>
       </form>
 
       {showSuccessMessage && (
@@ -100,3 +100,5 @@ const CheckoutForm = (props) => {
 };
 
 export default CheckoutForm;
+
+//  LocalWords:  submitButton useForm
