@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import axios from "axios";
+
+import requester from "easier-requests";
 
 export default class PlantList extends Component {
-  // add state with a property called "plants" - initialize as an empty array
-  constructor () {
+  constructor() {
     super();
 
     this.state = {plants: []};
