@@ -1,12 +1,25 @@
 import React, { Component } from "react";
-import axios from "axios";
+
+import requester from "easier-requests";
 
 export default class PlantList extends Component {
-  // add state with a property called "plants" - initialize as an empty array
+  constructor() {
+    super();
 
-  // when the component mounts:
-  //   - fetch data from the server endpoint - http://localhost:3333/plants
-  //   - set the returned plants array to this.state.plants
+    this.state = {plants: []};
+  }
+
+  async componentDidMount() {
+    try {
+      const id = requester.createUniqueID();
+      await requester.get("http://localhost:3333/plants", id);
+      const data = requester.response(id).data.plantsData;
+      this.setState({plants: data});
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
 
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
