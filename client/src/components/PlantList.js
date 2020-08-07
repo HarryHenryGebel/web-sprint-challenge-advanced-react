@@ -9,13 +9,12 @@ export default class PlantList extends Component {
     this.state = {plants: []};
   }
 
-  // when the component mounts:
-  //   - fetch data from the server endpoint - http://localhost:3333/plants
-  //   - set the returned plants array to this.state.plants
   async componentDidMount() {
     try {
       const id = requester.createUniqueID();
       await requester.get("http://localhost:3333/plants", id);
+      const data = requester.response(id).data.plantsData;
+      this.setState({plants: data});
     } catch (error) {
       console.log(error);
       throw error;
