@@ -78,7 +78,7 @@ const CheckoutForm = (props) => {
         <button data-testid="submitButton">Checkout</button>
       </form>
 
-      {showSuccessMessage && (
+      {showSuccessMessage ? (
         <div className="success-message" data-testid="successMessage">
           <p>
             You have ordered some plants! Woo-hoo! <span role="img">🎉</span>
@@ -94,7 +94,11 @@ const CheckoutForm = (props) => {
             {values.city}, {values.state} {values.zip}
           </p>
         </div>
-      )}
+      ) :
+       <div data-testid="failureMessage">
+         Please complete the entire form! Use "NFA" if you do not have a
+         first name.
+       </div>}
     </>
   );
 };
